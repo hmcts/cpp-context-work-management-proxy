@@ -12,7 +12,7 @@
 
     <groupId>uk.gov.moj.cpp.work-management-proxy</groupId>
     <artifactId>work-management-proxy-parent</artifactId>
-    <version>17.103.43-SNAPSHOT</version>
+    <version>17.103.42</version>
     <packaging>pom</packaging>
 
     <name>Work management proxy - Parent module</name>
