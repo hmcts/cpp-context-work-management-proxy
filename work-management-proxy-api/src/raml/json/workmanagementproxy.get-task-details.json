@@ -1,0 +1,49 @@
+{
+  "task": {
+    "id": "311f8315-f17c-11ec-aa9f-08002783bfed",
+    "name": "Book intermediary",
+    "due": "Sat Jun 18 00:00:00 UTC 2022",
+    "assignee": "",
+    "created": "21-Jun-2022",
+    "candidateGroups": [
+      "Court Administrators"
+    ],
+    "isUrgent": false,
+    "courtCodes": "B01IX00",
+    "organisationId": "1331dfe8-8aa5-47f7-bb76-275b83fc312d",
+    "note": "Test 17/06/22 123456789-16 [~Erica.Wilson]",
+    "displayName": "Book intermediary",
+    "customTaskType": "Book_intermediary",
+    "userName": "system created",
+    "taskOverdueFlag": true,
+    "taskType": "custom_activity",
+    "workQueue": "test queue",
+    "caseURN": "93GD3773422",
+    "caseId": "7e16a731-3060-4dfb-aa61-2b83822e9a78",
+    "caseTag": "test tag",
+    "deepLink": "test deep link",
+    "taskName": "Book_intermediary",
+    "defendants": [
+      {
+        "id": "1",
+        "firstName": "Smith",
+        "lastName": "Philip"
+      },
+      {
+        "id": "2",
+        "firstName": "Mona",
+        "lastName": "Lisa"
+      },
+      {
+        "id": "3",
+        "firstName": "Victor",
+        "lastName": "Hugo"
+      },
+      {
+        "id": "4",
+        "firstName": "Leo",
+        "lastName": "Tolstoy"
+      }
+    ]
+  }
+}

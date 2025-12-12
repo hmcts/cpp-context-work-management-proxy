@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://moj.gov.uk/cps/workmanagement/proxy/api/workmanagementproxy.get-task-details.json",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "task": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "assignee": {
+          "type": "string"
+        },
+        "delegationState": {
+          "type": "string"
+        },
+        "processInstanceId": {
+          "type": "string"
+        },
+        "processDefinitionId": {
+          "type": "string"
+        },
+        "caseInstanceId": {
+          "type": "string"
+        },
+        "caseExecutionId": {
+          "type": "string"
+        },
+        "caseDefinitionId": {
+          "type": "string"
+        },
+        "createTime": {
+          "type": "string"
+        },
+        "executionId": {
+          "type": "string"
+        },
+        "taskDefinitionKey": {
+          "type": "string"
+        },
+        "dueDate": {
+          "type": "string"
+        },
+        "followUpDate": {
+          "type": "string"
+        },
+        "parentTaskId": {
+          "type": "string"
+        },
+        "formKey": {
+          "type": "string"
+        },
+        "tenantId": {
+          "type": "string"
+        },
+        "candidateGroups": {
+            "description": "Identity links",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+        },
+        "defendants": {
+          "type": "array",
+          "items": {
+            "$ref": "http://moj.gov.uk/cps/workmanagement/proxy/api/defendant.json"
+          }
+        }
+      }
+    }
+  }
+}

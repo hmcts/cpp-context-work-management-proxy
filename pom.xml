@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>uk.gov.moj.cpp.common</groupId>
+        <artifactId>service-parent-pom</artifactId>
+        <version>17.103.5</version>
+    </parent>
+
+
+    <groupId>uk.gov.moj.cpp.work-management-proxy</groupId>
+    <artifactId>work-management-proxy-parent</artifactId>
+    <version>17.103.42-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Work management proxy - Parent module</name>
+
+    <properties>
+        <sonar.jacoco.itReportPath>${project.basedir}/../target/jacoco-it.exec</sonar.jacoco.itReportPath>
+        <sonar.report.export.path>sonar-report.json</sonar.report.export.path>
+        <sonar.scm.provider>git</sonar.scm.provider>
+        <sonar.coverage.exclusions>**/model/*</sonar.coverage.exclusions>
+        <sonar.cpd.exclusions>**/model/*</sonar.cpd.exclusions>
+        <cpp.camunda.version>7.17.0</cpp.camunda.version>
+        <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
+        <lombok.mapstruct.binding.version>0.2.0</lombok.mapstruct.binding.version>
+        <org.projectlombok.version>1.18.26</org.projectlombok.version>
+        <usersgroups.version>17.0.39</usersgroups.version>
+        <referencedata.version>17.0.84</referencedata.version>
+        <coredomain.version>17.103.10</coredomain.version>
+        <jgitflow-maven-plugin.version>1.0-m5.1</jgitflow-maven-plugin.version>
+    </properties>
+
+    <modules>
+        <module>work-management-proxy-api</module>
+        <module>work-management-proxy-integration-test</module>
+        <module>work-management-proxy-healthchecks</module>
+        <module>work-management-proxy-ping-all</module>
+    </modules>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.camunda.bpm</groupId>
+                <artifactId>camunda-bom</artifactId>
+                <version>${cpp.camunda.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${org.mapstruct.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <generatedSourcesDirectory>${project.build.directory}/generated-source</generatedSourcesDirectory>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${org.mapstruct.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok-mapstruct-binding</artifactId>
+                            <version>${lombok.mapstruct.binding.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${org.projectlombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>external.atlassian.jgitflow</groupId>
+                <artifactId>jgitflow-maven-plugin</artifactId>
+                <version>${jgitflow-maven-plugin.version}</version>
+                <configuration>
+                    <flowInitContext>
+                        <masterBranchName>dev/release</masterBranchName>
+                        <developBranchName>main</developBranchName>
+                        <featureBranchPrefix>dev/feature-</featureBranchPrefix>
+                        <releaseBranchPrefix>dev/release-</releaseBranchPrefix>
+                        <hotfixBranchPrefix>dev/hotfix-</hotfixBranchPrefix>
+                        <versionTagPrefix>v</versionTagPrefix>
+                    </flowInitContext>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <enableSshAgent>true</enableSshAgent>
+                    <pushReleases>true</pushReleases>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

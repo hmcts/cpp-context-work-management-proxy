@@ -1,0 +1,9 @@
+{
+  "businessKey": "myBusinessKey_123",
+  "variables": {
+    "dueDate": {
+      "value": "2015-10-10T10:10:10",
+      "type": "String"
+    }
+  }
+}

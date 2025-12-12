@@ -1,0 +1,22 @@
+{
+  "displayName": "Check phone call2",
+  "taskName": "customTask1",
+  "taskType": "assignment",
+  "due": "2021-11-03T23:59:00.000Z",
+  "caseURN": "29GD7875621",
+  "assignee": "checkOuCodeLogic",
+  "candidateGroups": "dadsada",
+  "isDeletable": true,
+  "isDeferrable": true,
+  "caseId": "8e4b2be0-f92a-4291-9b99-17af7e645472",
+  "businessUnitCodes": "businessUnitOuCode",
+  "courtCodes": "courtOuCode",
+  "isUrgent": false,
+  "defendants": [{"id": "1", "firstName": "Smith", "lastName": "Philip"},
+    {"id": "2", "firstName": "Mona", "lastName": "Lisa"},
+    {"id": "3", "firstName": "Victor", "lastName": "Hugo"},
+    {"id": "4", "firstName": "Leo", "lastName": "Tolstoy"}],
+  "comment": "This is test comment",
+  "noteLastUpdatedDate": "2021-11-03T23:59:00.000Z",
+  "noteLastUpdatedUser": "Erica Wilson"
+}

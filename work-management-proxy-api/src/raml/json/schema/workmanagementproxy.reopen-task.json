@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://moj.gov.uk/cps/workmanagement/proxy/api/workmanagementproxy.reopen-task.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "assignee": {
+      "type": "string"
+    },
+    "candidateGroups": {
+      "type": "string"
+    },
+    "dueDate": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "assignee",
+    "candidateGroups",
+    "dueDate",
+    "reason"
+  ]
+}

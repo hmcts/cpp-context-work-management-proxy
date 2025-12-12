@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://moj.gov.uk/cps/workmanagement/proxy/api/workmanagementproxy.create-custom-task.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "displayName": {
+      "type": "string"
+    },
+    "taskName": {
+      "type": "string"
+    },
+    "taskType": {
+      "type": "string"
+    },
+    "due": {
+      "type": "string"
+    },
+    "caseURN": {
+      "type": "string"
+    },
+    "assignee": {
+      "type": "string"
+    },
+    "candidateGroups": {
+      "type": "string"
+    },
+    "isDeletable": {
+      "type": "boolean"
+    },
+    "isDeferrable": {
+      "type": "boolean"
+    },
+    "caseId": {
+      "type": "string"
+    },
+    "caseTag": {
+      "type": "string"
+    },
+    "businessUnitCodes": {
+      "type": "string"
+    },
+    "courtCodes": {
+      "type": "string"
+    },
+    "isUrgent": {
+      "type": "boolean"
+    },
+    "defendants": {
+      "type": "array",
+      "items": {
+        "$ref": "http://moj.gov.uk/cps/workmanagement/proxy/api/defendant.json"
+      }
+    },
+    "comment": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    },
+    "noteLastUpdatedDate": {
+      "type": "string"
+    },
+    "noteLastUpdatedUser": {
+      "type": "string"
+    },
+    "hearingDate": {
+      "type": "string"
+    }
+
+  },
+  "required": [
+    "caseURN",
+    "courtCodes"
+  ]
+}
