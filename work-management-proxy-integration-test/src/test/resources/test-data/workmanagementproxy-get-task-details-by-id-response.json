@@ -1,0 +1,17 @@
+{
+  "task": {
+    "id": "f5cec41a-ecef-11ec-93f5-08002783bfed",
+    "name": "Checkphonecall2",
+    "due": "Thu Nov 03 00:00:00 UTC 2022",
+    "assignee": "genericTaskUser",
+    "created": "15-Jun-2022",
+    "candidateGroups": [
+      "generics"
+    ],
+    "displayName": "Checkphonecall2",
+    "taskTitle": "review_process",
+    "userName": "systemcreated",
+    "taskOverdueFlag": false,
+    "genericTaskVariablesJsonString": "CreateGenericTask{assignee='genericTaskUser',candidateGroups='generics',displayName='Checkphonecall2',due='2022-11-03T23:59:00.000Z',taskTitle='review_process'}"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://moj.gov.uk/cps/workmanagement/proxy/api/workmanagementproxy.update-task.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "taskId": {
+      "type": "string"
+    },
+    "workQueue": {
+      "type": "string"
+    },
+    "dueDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "note": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "taskId"
+  ]
+}

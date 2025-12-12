@@ -1,0 +1,5 @@
+<kmodule xmlns="http://www.drools.org/xsd/kmodule">
+    <kbase name="WorkManagement.Proxy.API" packages="uk.gov.moj.cpp.workmanagement.proxy.command.api.accesscontrol" default="false">
+        <ksession name="COMMAND_API_SESSION" default="false" type="stateless"/>
+    </kbase>
+</kmodule>

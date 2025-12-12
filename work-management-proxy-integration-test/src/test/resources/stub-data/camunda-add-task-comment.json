@@ -1,0 +1,14 @@
+{
+  "links": [
+    {
+      "method": "GET",
+      "href": "http://localhost:8080/engine-rest/task/task-123457/comment/8c43ec58-cacd-11eb-b173-08002783bfed",
+      "rel": "self"
+    }
+  ],
+  "id": "8c43ec58-cacd-11eb-b173-08002783bfed",
+  "userId": null,
+  "time": "2021-06-11T15:56:13.530+0000",
+  "taskId": "task-123457",
+  "message": "a task comment123"
+}

@@ -1,0 +1,170 @@
+package uk.gov.moj.cpp.workmanagement.proxy.command.api.accesscontrol;
+
+import uk.gov.moj.cpp.accesscontrol.drools.Outcome;
+import uk.gov.moj.cpp.accesscontrol.drools.Action;
+import uk.gov.moj.cpp.workmanagement.proxy.api.permission.PermissionProvider;
+
+global uk.gov.moj.cpp.accesscontrol.common.providers.UserAndGroupProvider userAndGroupProvider;
+
+rule "Command - Start Instance By Key"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "start-process");
+    eval(userAndGroupProvider.hasPermission($action, PermissionProvider.getUpdatePermission()));
+  then
+    $outcome.setSuccess(true);
+end
+
+rule "Command - Assign user to task"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "assign-task");
+    eval(userAndGroupProvider.hasPermission($action, PermissionProvider.getUpdatePermission()));
+  then
+    $outcome.setSuccess(true);
+end
+
+rule "Command - Add task comment"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "add-task-comment");
+    eval(userAndGroupProvider.hasPermission($action, PermissionProvider.getUpdatePermission()));
+  then
+    $outcome.setSuccess(true);
+end
+
+rule "Command - complete a task"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "complete-task");
+    eval(userAndGroupProvider.hasPermission($action, PermissionProvider.getUpdatePermission()));
+  then
+    $outcome.setSuccess(true);
+end
+
+rule "Command - Update task variable"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "update-task-variable");
+    eval(userAndGroupProvider.hasPermission($action, PermissionProvider.getUpdatePermission()));
+  then
+    $outcome.setSuccess(true);
+end
+
+rule "Command - Update task local variables"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "update-task-local-variable");
+    eval(userAndGroupProvider.hasPermission($action, PermissionProvider.getUpdatePermission()));
+  then
+    $outcome.setSuccess(true);
+end
+
+rule "Command - Get all tasks comments"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "get-task-comment-list");
+    eval(userAndGroupProvider.hasPermission($action, PermissionProvider.getViewPermission()));
+  then
+    $outcome.setSuccess(true);
+end
+
+rule "Command - Get task list"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "get-task-list");
+    eval(userAndGroupProvider.hasPermission($action, PermissionProvider.getViewPermission()));
+  then
+    $outcome.setSuccess(true);
+end
+
+rule "Command - Get task"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "get-task");
+    eval(userAndGroupProvider.hasPermission($action, PermissionProvider.getViewPermission()));
+  then
+    $outcome.setSuccess(true);
+end
+
+
+rule "Command - custom query assignee tasks with variables"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "custom-query-assignee-tasks-with-variables");
+    eval(userAndGroupProvider.hasPermission($action, PermissionProvider.getViewPermission()));
+  then
+    $outcome.setSuccess(true);
+end
+
+rule "Command - custom query available tasks with variables"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "custom-query-available-tasks-with-variables");
+    eval(userAndGroupProvider.hasPermission($action, PermissionProvider.getViewPermission()));
+  then
+    $outcome.setSuccess(true);
+end
+
+rule "Command - create custom task"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "create-custom-task");
+    eval(userAndGroupProvider.hasPermission($action, PermissionProvider.getUpdatePermission()));
+  then
+    $outcome.setSuccess(true);
+end
+
+rule "Command - create generic task"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "create-generic-task");
+    eval(userAndGroupProvider.hasPermission($action, PermissionProvider.getUpdatePermission()));
+  then
+    $outcome.setSuccess(true);
+end
+
+rule "Command - get task details"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "get-task-details");
+    eval(userAndGroupProvider.hasPermission($action, PermissionProvider.getViewPermission()));
+  then
+    $outcome.setSuccess(true);
+end
+
+rule "Command - activity summary"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "activity-summary");
+    eval(userAndGroupProvider.hasPermission($action, PermissionProvider.getViewPermission()));
+  then
+    $outcome.setSuccess(true);
+end
+
+rule "Command - update task"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "update-task");
+    eval(userAndGroupProvider.hasPermission($action, PermissionProvider.getUpdatePermission()));
+  then
+    $outcome.setSuccess(true);
+end
+
+rule "Command - task history"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "task-history");
+    eval(userAndGroupProvider.hasPermission($action, PermissionProvider.getViewPermission()));
+  then
+    $outcome.setSuccess(true);
+end
+
+rule "Command -reopen task"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "reopen-task");
+    eval(userAndGroupProvider.hasPermission($action, PermissionProvider.getUpdatePermission()));
+  then
+    $outcome.setSuccess(true);
+end

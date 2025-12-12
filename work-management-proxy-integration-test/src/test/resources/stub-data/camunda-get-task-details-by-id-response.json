@@ -1,0 +1,23 @@
+{
+  "id": "f5cec41a-ecef-11ec-93f5-08002783bfed",
+  "name": "Checkphonecall2",
+  "assignee": "genericTaskUser",
+  "created": "2022-06-15T21:13:10.695+0000",
+  "due": "2022-11-03T23:59:00.000+0000",
+  "followUp": null,
+  "delegationState": null,
+  "description": null,
+  "executionId": "f5cb68ac-ecef-11ec-93f5-08002783bfed",
+  "owner": null,
+  "parentTaskId": null,
+  "priority": 50,
+  "processDefinitionId": "generic_task_process:2:d08a0114-ecba-11ec-93f5-08002783bfed",
+  "processInstanceId": "f5cb68ac-ecef-11ec-93f5-08002783bfed",
+  "taskDefinitionKey": "GenericTask",
+  "caseExecutionId": null,
+  "caseInstanceId": null,
+  "caseDefinitionId": null,
+  "suspended": false,
+  "formKey": null,
+  "tenantId": null
+}

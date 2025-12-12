@@ -1,0 +1,16 @@
+{
+  "links": [
+    {
+      "method": "GET",
+      "href": "http://localhost:8080/engine-rest/process-instance/e704673b-cdcc-11eb-aebf-08002783bfed",
+      "rel": "self"
+    }
+  ],
+  "id": "e704673b-cdcc-11eb-aebf-08002783bfed",
+  "definitionId": "test_send_email_process:10:de4469ba-cdcc-11eb-aebf-08002783bfed",
+  "businessKey": "myBusinessKey_123",
+  "caseInstanceId": null,
+  "ended": false,
+  "suspended": false,
+  "tenantId": null
+}

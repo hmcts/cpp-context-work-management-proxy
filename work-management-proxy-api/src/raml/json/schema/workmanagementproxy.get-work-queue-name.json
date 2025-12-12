@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://moj.gov.uk/cps/workmanagement/proxy/api/workmanagementproxy.get-work-queue-name.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "seqNum": {
+      "type": "string"
+    },
+    "workQueueDescription": {
+      "type": "string"
+    },
+    "validFrom": {
+      "type": "string"
+    },
+    "validTo": {
+      "type": "string"
+    },
+    "deepLink": {
+      "type": "string"
+    }
+  }
+}

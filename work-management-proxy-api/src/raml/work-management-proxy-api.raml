@@ -1,0 +1,429 @@
+#%RAML 0.8
+title: Work Management Proxy API
+baseUri: http://localhost:8080/work-management-proxy-api/rest/workmanagementproxy
+mediaType: application/json
+protocols: [ HTTP, HTTPS ]
+
+/process-definition/key/{processDefinitionKey}/start/:
+  description: |
+    start the process by key
+  post:
+    description: |
+        ...
+        (mapping):
+            requestType: application/vnd.workmanagementproxy.start-process+json
+            name: start-process
+        ...
+
+    body:
+        application/vnd.workmanagementproxy.start-process+json:
+            schema: !include json/schema/workmanagementproxy.start-process.json
+            example: !include json/workmanagementproxy.start-process.json
+
+    responses:
+          202:
+              description: Accepted
+
+/task/{taskId}/comment/create:
+  description: |
+    Add task comment
+  post:
+    description: |
+        ...
+        (mapping):
+            requestType: application/vnd.workmanagementproxy.add-task-comment+json
+            name: add-task-comment
+        ...
+
+    body:
+        application/vnd.workmanagementproxy.add-task-comment+json:
+            schema: !include json/schema/workmanagementproxy.add-task-comment.json
+            example: !include json/workmanagementproxy.add-task-comment.json
+
+    responses:
+          202:
+              description: Accepted
+
+/task/{taskId}/comment:
+  description: |
+        Get all task comments
+
+  get:
+    description: |
+        Get all tasks comments
+        ...
+        (mapping):
+            responseType: application/vnd.workmanagementproxy.get-task-comment-list+json
+            name: get-task-comment-list
+        ...
+    responses:
+      200:
+        body:
+          application/vnd.workmanagementproxy.get-task-comment-list+json:
+              example: !include json/workmanagementproxy.get-task-comment-list.json
+              schema:  !include json/schema/workmanagementproxy.get-task-comment-list.json
+
+/task/{taskId}/localVariables/{varName}:
+  uriParameters:
+    taskId:
+      description: A taskId to be completed
+    varName:
+      description: A variable name to be updated
+  description: |
+    Update task with a variable
+  put:
+    description: |
+        ...
+        (mapping):
+            requestType: application/vnd.workmanagementproxy.update-task-variable+json
+            name: update-task-variable
+        ...
+
+    body:
+        application/vnd.workmanagementproxy.update-task-variable+json:
+            schema: !include json/schema/workmanagementproxy.update-task-variable.json
+            example: !include json/workmanagementproxy.update-task-variable.json
+
+    responses:
+          202:
+              description: Accepted
+
+/task/{taskId}/localVariables:
+  uriParameters:
+    taskId:
+      description: A taskId to be updated
+  post:
+    description: |
+          Removes a task by id
+          ...
+          (mapping):
+              requestType: application/vnd.workmanagementproxy.update-task-local-variable+json
+              name: update-task-local-variable
+          ...
+
+    body:
+        application/vnd.workmanagementproxy.update-task-local-variable+json:
+            schema: !include json/schema/workmanagementproxy.update-task-local-variable.json
+            example: !include json/workmanagementproxy.update-task-local-variable.json
+
+    responses:
+          202:
+            description: Accepted
+
+/task:
+  description: |
+    Get all tasks
+
+  get:
+    description: |
+        Get all tasks
+        ...
+        (mapping):
+            responseType: application/vnd.workmanagementproxy.get-task-list+json
+            name: get-task-list
+        ...
+    queryParameters:
+      processInstanceBusinessKey:
+          description: this Id is custom business key.
+          type: string
+          example: dc2a0863-d81f-11eb-aa97-08002783bfed
+          required: false
+      processInstanceId:
+          description: process instance Id
+          type: string
+          example: dc2a0863-d81f-11eb-aa97-08002783bfed
+          required: false
+      taskDefinitionKey:
+          description: specific task definition key of
+          type: string
+          example: reviewCase
+          required: false
+
+    responses:
+      200:
+        body:
+          application/vnd.workmanagementproxy.get-task-list+json:
+
+/task/{taskId}:
+  uriParameters:
+    taskId:
+      description: A taskId to be completed
+  post:
+    description: |
+          Removes a task by id
+          ...
+          (mapping):
+              requestType: application/vnd.workmanagementproxy.complete-task+json
+              name: complete-task
+          ...
+
+    body:
+        application/vnd.workmanagementproxy.complete-task+json:
+            schema: !include json/schema/workmanagementproxy.complete-task.json
+            example: !include json/workmanagementproxy.complete-task.json
+
+    responses:
+          202:
+            description: Accepted
+
+  get:
+    description: |
+        Get a task with given id
+        ...
+        (mapping):
+            responseType: application/vnd.workmanagementproxy.get-task+json
+            name: get-task
+
+        (mapping):
+            responseType: application/vnd.workmanagementproxy.get-task-details+json
+            name: get-task-details
+        ...
+    responses:
+      200:
+        body:
+          application/vnd.workmanagementproxy.get-task+json:
+          application/vnd.workmanagementproxy.get-task-details+json:
+              example: !include json/workmanagementproxy.get-task-details.json
+              schema:  !include json/schema/workmanagementproxy.get-task-details.json
+
+/custom/tasks:
+  get:
+    description: |
+      Gets the tasks belongs to the user
+      ...
+      (mapping):
+        responseType: application/vnd.workmanagementproxy.custom-query-assignee-tasks-with-variables+json
+        name: custom-query-assignee-tasks-with-variables
+
+      (mapping):
+        responseType: application/vnd.workmanagementproxy.custom-query-available-tasks-with-variables+json
+        name: custom-query-available-tasks-with-variables
+
+      (mapping):
+        responseType: application/vnd.workmanagementproxy.activity-summary+json
+        name: activity-summary
+      ...
+    queryParameters:
+      candidateGroups:
+        description: comma separated roles Names or ids
+        type: string
+        pattern: “[^,]+”
+        example: Role1,Role2
+        required: false
+      activityTypes:
+        description: comma separated task definition keys
+        type: string
+        pattern: “[^,]+”
+        example: String1,String2
+        required: false
+      isUrgent:
+        description: task urgent boolean value
+        type: boolean
+        example: true
+        required: false
+      isAssigned:
+        description: task assigned boolean value
+        type: boolean
+        example: true
+        required: false
+      isCtlOnly:
+        description: presence of custody time limit boolean value
+        type: boolean
+        example: false
+        required: false
+      offset:
+        description: Integer value for offsetting page
+        type: integer
+        example: 3
+        required: false
+      limit:
+        description: maximum entries returned
+        type: integer
+        example: 20
+        required: false
+      due:
+        description: due date for tasks
+        type: string
+        example: 23-03-2020
+        required: false
+      dueDaysWithIn:
+        description: number of days range from and to due date
+        type: integer
+        example: 20
+        required: false
+      followUp:
+        description: followup date for tasks
+        type: string
+        example: 23-03-2020
+        required: false
+      followUpDaysWithIn:
+        description: number of days range from and to followup date
+        type: integer
+        example: 20
+        required: false
+      caseURN:
+        description: case URN value
+        type: string
+        example: 29GD7875621
+        required: false
+      hearingDate:
+        description: hearing date for tasks
+        type: string
+        example: 23-03-2020
+        required: false
+      hearingDaysWithIn:
+        description: number of days range from and to hearing date
+        type: integer
+        example: 20
+        required: false
+      assignee:
+        description: assignee id or name for tasks
+        type: string
+        example: e7be77a9-9ac5-431d-a23b-2d750e441b75
+        required: false
+      courtCodes:
+        description: ou code of courts in hmcts
+        type: string
+        example: A132BNE
+        required: false
+      region:
+        description: region of courts in hmcts
+        type: string
+        example: London
+        required: false
+      businessUnitCodes:
+        description: ou code of business units in cps
+        type: string
+        example: A132BNE
+        required: false
+      workQueueTypes:
+        description:  workQueueTypes
+        type: string
+        example: e7be77a9-9ac5-431d-a23b-2d750e441b75,e7be77a9-9ac5-431d-a23b-2d750e441b75
+        required: false
+      caseTag:
+        description:  caseTag
+        type: string
+        example: test
+        required: false
+      taskStatus:
+        description:  taskStatus
+        type: string
+        example: completed
+        required: false
+      isOverdue:
+        description: task is overdue boolean value
+        type: boolean
+        example: true
+        required: false
+      isDueSoon:
+        description: task is due soon
+        type: boolean
+        example: true
+        required: false
+    responses:
+        200:
+          description: OK
+          body:
+            application/vnd.workmanagementproxy.custom-query-assignee-tasks-with-variables+json:
+              example: !include json/workmanagementproxy.custom-query-assignee-tasks-with-variables.json
+              schema:  !include json/schema/workmanagementproxy.custom-query-assignee-tasks-with-variables.json
+
+            application/vnd.workmanagementproxy.custom-query-available-tasks-with-variables+json:
+              example: !include json/workmanagementproxy.custom-query-available-tasks-with-variables.json
+              schema:  !include json/schema/workmanagementproxy.custom-query-available-tasks-with-variables.json
+
+            application/vnd.workmanagementproxy.activity-summary+json:
+              example: !include json/workmanagementproxy.activity-summary.json
+              schema:  !include json/schema/workmanagementproxy.activity-summary.json
+  post:
+    description: |
+      ...
+      (mapping):
+        requestType: application/vnd.workmanagementproxy.create-custom-task+json
+        name: create-custom-task
+      ...
+    body:
+        application/vnd.workmanagementproxy.create-custom-task+json:
+            schema: !include json/schema/workmanagementproxy.create-custom-task.json
+    responses:
+        200:
+          description: OK
+
+/custom/tasks/update:
+  post:
+    description: |
+      ...
+      (mapping):
+        requestType: application/vnd.workmanagementproxy.update-task+json
+        name: update-task
+      ...
+    body:
+        application/vnd.workmanagementproxy.update-task+json:
+            schema: !include json/schema/workmanagementproxy.update-task.json
+    responses:
+        200:
+          description: OK
+
+/custom/task/assign:
+  description: |
+    Assign user to task
+  post:
+    description: |
+        ...
+        (mapping):
+            requestType: application/vnd.workmanagementproxy.assign-task+json
+            name: assign-task
+        ...
+
+    body:
+        application/vnd.workmanagementproxy.assign-task+json:
+            schema: !include json/schema/workmanagementproxy.assign-task.json
+            example: !include json/workmanagementproxy.assign-task.json
+
+    responses:
+          202:
+              description: Accepted
+
+/custom/tasks/{taskId}/reopen:
+  uriParameters:
+    taskId:
+      description: A taskId to be re-opened
+  description: |
+    Re-open a task
+  post:
+    description: |
+      ...
+      (mapping):
+          requestType: application/vnd.workmanagementproxy.reopen-task+json
+          name: reopen-task
+      ...
+
+    body:
+      application/vnd.workmanagementproxy.reopen-task+json:
+        schema: !include json/schema/workmanagementproxy.reopen-task.json
+        example: !include json/workmanagementproxy.reopen-task.json
+
+    responses:
+      200:
+        description: OK
+
+
+/generic/tasks:
+  description: |
+      process a task using generic task process
+  post:
+    description: |
+          invoke a task with passing existing task process name in payload
+          ...
+          (mapping):
+              requestType: application/vnd.workmanagementproxy.create-generic-task+json
+              name: create-generic-task
+          ...
+    body:
+        application/vnd.workmanagementproxy.create-generic-task+json:
+            schema: !include json/schema/workmanagementproxy.create-generic-task.json
+            example: !include json/workmanagementproxy.create-generic-task.json
+    responses:
+          200:
+            description: OK
