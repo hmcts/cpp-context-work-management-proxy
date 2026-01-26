@@ -7,7 +7,7 @@ import static java.time.LocalDate.now;
 import static java.time.format.DateTimeFormatter.ISO_DATE;
 import static java.util.Date.from;
 import static java.util.UUID.randomUUID;
-import static javax.json.Json.createObjectBuilder;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.allOf;
@@ -76,7 +76,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import javax.json.Json;
+import uk.gov.justice.services.messaging.JsonObjects;
 import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
@@ -1171,7 +1171,7 @@ public class CamundaProxyApiTest {
     @Test
     void testAddResponseVariables() {
         CamundaProxyApi spyCamundaProxyApi = spy(new CamundaProxyApi());
-        JsonObjectBuilder jsonObjectBuilder = Json.createObjectBuilder();
+        JsonObjectBuilder jsonObjectBuilder = JsonObjects.createObjectBuilder();
 
         Map<String, Object> variables = Map.of(
                 "booleanVar", true,
@@ -1196,46 +1196,46 @@ public class CamundaProxyApiTest {
     void testAddResponseVariablesToJsonBuilder() {
         CamundaProxyApi spyCamundaProxyApi = spy(new CamundaProxyApi());
 
-        JsonObjectBuilder jsonObjectBuilder = Json.createObjectBuilder();
+        JsonObjectBuilder jsonObjectBuilder = JsonObjects.createObjectBuilder();
         spyCamundaProxyApi.addResponseVariablesToJsonBuilder("booleanVar", true, jsonObjectBuilder);
         assertEquals(true, jsonObjectBuilder.build().getBoolean("booleanVar"));
 
-        jsonObjectBuilder = Json.createObjectBuilder();
+        jsonObjectBuilder = JsonObjects.createObjectBuilder();
         spyCamundaProxyApi.addResponseVariablesToJsonBuilder("intVar", 42, jsonObjectBuilder);
         assertEquals(42, jsonObjectBuilder.build().getInt("intVar"));
 
-        jsonObjectBuilder = Json.createObjectBuilder();
+        jsonObjectBuilder = JsonObjects.createObjectBuilder();
         spyCamundaProxyApi.addResponseVariablesToJsonBuilder("longVar", 42L, jsonObjectBuilder);
         assertEquals(42L, jsonObjectBuilder.build().getJsonNumber("longVar").longValue());
 
-        jsonObjectBuilder = Json.createObjectBuilder();
+        jsonObjectBuilder = JsonObjects.createObjectBuilder();
         spyCamundaProxyApi.addResponseVariablesToJsonBuilder("doubleVar", 42.42, jsonObjectBuilder);
         assertEquals(42.42, jsonObjectBuilder.build().getJsonNumber("doubleVar").doubleValue());
 
-        jsonObjectBuilder = Json.createObjectBuilder();
+        jsonObjectBuilder = JsonObjects.createObjectBuilder();
         BigDecimal bigDecimal = new BigDecimal("42.42");
         spyCamundaProxyApi.addResponseVariablesToJsonBuilder("bigDecimalVar", bigDecimal, jsonObjectBuilder);
         assertEquals(bigDecimal, jsonObjectBuilder.build().getJsonNumber("bigDecimalVar").bigDecimalValue());
 
-        jsonObjectBuilder = Json.createObjectBuilder();
+        jsonObjectBuilder = JsonObjects.createObjectBuilder();
         BigInteger bigInteger = new BigInteger("42");
         spyCamundaProxyApi.addResponseVariablesToJsonBuilder("bigIntegerVar", bigInteger, jsonObjectBuilder);
         assertEquals(bigInteger, jsonObjectBuilder.build().getJsonNumber("bigIntegerVar").bigIntegerValue());
 
-        jsonObjectBuilder = Json.createObjectBuilder();
+        jsonObjectBuilder = JsonObjects.createObjectBuilder();
         spyCamundaProxyApi.addResponseVariablesToJsonBuilder("stringVar", "stringValue", jsonObjectBuilder);
         assertEquals("stringValue", jsonObjectBuilder.build().getString("stringVar"));
 
-        jsonObjectBuilder = Json.createObjectBuilder();
+        jsonObjectBuilder = JsonObjects.createObjectBuilder();
         String defendantsJson = "[{\"id\":\"123\",\"firstName\":\"John\",\"lastName\":\"Doe\"},{\"id\":\"124\",\"firstName\":\"Jane\",\"lastName\":\"Doe\"}]";
         spyCamundaProxyApi.addResponseVariablesToJsonBuilder("DEFENDANTS", defendantsJson, jsonObjectBuilder);
 
-        JsonArrayBuilder expectedDefendantsArray = Json.createArrayBuilder()
-                .add(Json.createObjectBuilder()
+        JsonArrayBuilder expectedDefendantsArray = JsonObjects.createArrayBuilder()
+                .add(JsonObjects.createObjectBuilder()
                         .add("id", "123")
                         .add("firstName", "John")
                         .add("lastName", "Doe"))
-                .add(Json.createObjectBuilder()
+                .add(JsonObjects.createObjectBuilder()
                         .add("id", "124")
                         .add("firstName", "Jane")
                         .add("lastName", "Doe"));
@@ -1249,13 +1249,13 @@ public class CamundaProxyApiTest {
 
         JsonArrayBuilder result = camundaProxyApi.getJsonArrayBuilder(jsonValue);
 
-        JsonArrayBuilder expectedJsonArrayBuilder = Json.createArrayBuilder();
-        JsonObject jsonObject1 = Json.createObjectBuilder()
+        JsonArrayBuilder expectedJsonArrayBuilder = JsonObjects.createArrayBuilder();
+        JsonObject jsonObject1 = JsonObjects.createObjectBuilder()
                 .add("id", "1")
                 .add("firstName", "John")
                 .add("lastName", "Doe")
                 .build();
-        JsonObject jsonObject2 = Json.createObjectBuilder()
+        JsonObject jsonObject2 = JsonObjects.createObjectBuilder()
                 .add("id", "2")
                 .add("firstName", "Jane")
                 .add("lastName", "Doe")
@@ -1270,35 +1270,35 @@ public class CamundaProxyApiTest {
     void testAddVariablesToJsonBuilder() {
         CamundaProxyApi spyCamundaProxyApi = spy(new CamundaProxyApi());
 
-        JsonObjectBuilder jsonObjectBuilder = Json.createObjectBuilder();
+        JsonObjectBuilder jsonObjectBuilder = JsonObjects.createObjectBuilder();
         when(variableInstance.getName()).thenReturn("booleanVar");
         doReturn(true).when(spyCamundaProxyApi).getValueOfVarInstanceVariable(variableInstance);
         spyCamundaProxyApi.addVariablesToJsonBuilder(List.of(variableInstance), jsonObjectBuilder);
 
         assertEquals(true, jsonObjectBuilder.build().getBoolean("booleanVar"));
 
-        jsonObjectBuilder = Json.createObjectBuilder();
+        jsonObjectBuilder = JsonObjects.createObjectBuilder();
         when(variableInstance.getName()).thenReturn("intVar");
         doReturn(17).when(spyCamundaProxyApi).getValueOfVarInstanceVariable(variableInstance);
         spyCamundaProxyApi.addVariablesToJsonBuilder(List.of(variableInstance), jsonObjectBuilder);
 
         assertEquals(17, jsonObjectBuilder.build().getInt("intVar"));
 
-        jsonObjectBuilder = Json.createObjectBuilder();
+        jsonObjectBuilder = JsonObjects.createObjectBuilder();
         when(variableInstance.getName()).thenReturn("longVar");
         doReturn(21L).when(spyCamundaProxyApi).getValueOfVarInstanceVariable(variableInstance);
         spyCamundaProxyApi.addVariablesToJsonBuilder(List.of(variableInstance), jsonObjectBuilder);
 
         assertEquals(21L, jsonObjectBuilder.build().getJsonNumber("longVar").longValue());
 
-        jsonObjectBuilder = Json.createObjectBuilder();
+        jsonObjectBuilder = JsonObjects.createObjectBuilder();
         when(variableInstance.getName()).thenReturn("doubleVar");
         doReturn(42.42).when(spyCamundaProxyApi).getValueOfVarInstanceVariable(variableInstance);
         spyCamundaProxyApi.addVariablesToJsonBuilder(List.of(variableInstance), jsonObjectBuilder);
 
         assertEquals(42.42, jsonObjectBuilder.build().getJsonNumber("doubleVar").doubleValue());
 
-        jsonObjectBuilder = Json.createObjectBuilder();
+        jsonObjectBuilder = JsonObjects.createObjectBuilder();
         BigDecimal bigDecimal = new BigDecimal("54.54");
         when(variableInstance.getName()).thenReturn("bigDecimalVar");
         doReturn(bigDecimal).when(spyCamundaProxyApi).getValueOfVarInstanceVariable(variableInstance);
@@ -1306,7 +1306,7 @@ public class CamundaProxyApiTest {
 
         assertEquals(bigDecimal, jsonObjectBuilder.build().getJsonNumber("bigDecimalVar").bigDecimalValue());
 
-        jsonObjectBuilder = Json.createObjectBuilder();
+        jsonObjectBuilder = JsonObjects.createObjectBuilder();
         BigInteger bigInteger = new BigInteger("65");
         when(variableInstance.getName()).thenReturn("bigIntegerVar");
         doReturn(bigInteger).when(spyCamundaProxyApi).getValueOfVarInstanceVariable(variableInstance);
@@ -1314,7 +1314,7 @@ public class CamundaProxyApiTest {
 
         assertEquals(bigInteger, jsonObjectBuilder.build().getJsonNumber("bigIntegerVar").bigIntegerValue());
 
-        jsonObjectBuilder = Json.createObjectBuilder();
+        jsonObjectBuilder = JsonObjects.createObjectBuilder();
         String stringValue = "stringValue";
         when(variableInstance.getName()).thenReturn("stringVar");
         doReturn(stringValue).when(spyCamundaProxyApi).getValueOfVarInstanceVariable(variableInstance);
@@ -1322,17 +1322,17 @@ public class CamundaProxyApiTest {
 
         assertEquals(stringValue, jsonObjectBuilder.build().getString("stringVar"));
 
-        jsonObjectBuilder = Json.createObjectBuilder();
+        jsonObjectBuilder = JsonObjects.createObjectBuilder();
         String defendantsValue = "[{\"id\":\"123\", \"firstName\":\"John\", \"lastName\":\"Doe\"}, {\"defendantId\":\"124\", \"firstName\":\"Jane\", \"lastName\":\"Doe\"}]";
-        JsonArray defendantJsonArray = Json.createArrayBuilder()
-                .add(Json.createObjectBuilder().add("id", "123").add("firstName", "John").add("lastName", "Doe"))
-                .add(Json.createObjectBuilder().add("id", "124").add("firstName", "Jane").add("lastName", "Doe"))
+        JsonArray defendantJsonArray = JsonObjects.createArrayBuilder()
+                .add(JsonObjects.createObjectBuilder().add("id", "123").add("firstName", "John").add("lastName", "Doe"))
+                .add(JsonObjects.createObjectBuilder().add("id", "124").add("firstName", "Jane").add("lastName", "Doe"))
                 .build();
         when(variableInstance.getName()).thenReturn("defendants");
         doReturn(defendantsValue).when(spyCamundaProxyApi).getValueOfVarInstanceVariable(variableInstance);
-        JsonArrayBuilder jsonArrayBuilder = Json.createArrayBuilder()
-                .add(Json.createObjectBuilder().add("id", "123").add("firstName", "John").add("lastName", "Doe"))
-                .add(Json.createObjectBuilder().add("id", "124").add("firstName", "Jane").add("lastName", "Doe"));
+        JsonArrayBuilder jsonArrayBuilder = JsonObjects.createArrayBuilder()
+                .add(JsonObjects.createObjectBuilder().add("id", "123").add("firstName", "John").add("lastName", "Doe"))
+                .add(JsonObjects.createObjectBuilder().add("id", "124").add("firstName", "Jane").add("lastName", "Doe"));
         doReturn(jsonArrayBuilder).when(spyCamundaProxyApi).getJsonArrayBuilder(defendantsValue);
         spyCamundaProxyApi.addVariablesToJsonBuilder(List.of(variableInstance), jsonObjectBuilder);
 

@@ -11,13 +11,13 @@ import static uk.gov.moj.cpp.workmanagement.proxy.api.helper.WiremockTestHelper.
 
 import uk.gov.justice.service.wiremock.testutil.InternalEndpointMockUtils;
 
-import javax.json.Json;
+import uk.gov.justice.services.messaging.JsonObjects;
 import javax.json.JsonObject;
 
 public class ReferenceDataStub {
     public static void setupRefDataGetWorkQueue(final String resourceName, final String workQueueId) {
         InternalEndpointMockUtils.stubPingFor("referencedata-service");
-        final JsonObject ejectionReasonsJson = Json.createReader(ReferenceDataStub.class
+        final JsonObject ejectionReasonsJson = JsonObjects.createReader(ReferenceDataStub.class
                 .getResourceAsStream(resourceName))
                 .readObject();
 
