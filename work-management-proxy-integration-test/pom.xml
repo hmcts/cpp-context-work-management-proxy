@@ -5,7 +5,7 @@
     <parent>
         <groupId>uk.gov.moj.cpp.work-management-proxy</groupId>
         <artifactId>work-management-proxy-parent</artifactId>
-        <version>17.104.43-CHD-1784-SNAPSHOT</version>
+        <version>17.104.43-1784-SNAPSHOT</version>
     </parent>
 
     <artifactId>work-management-proxy-integration-test</artifactId>
