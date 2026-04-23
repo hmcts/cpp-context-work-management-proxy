@@ -2,8 +2,8 @@ package uk.gov.moj.cpp.workmanagement.proxy.api.service;
 
 import static java.util.Objects.nonNull;
 import static java.util.Optional.empty;
-import static javax.json.Json.createObjectBuilder;
-import static javax.json.Json.createReader;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
+import static uk.gov.justice.services.messaging.JsonObjects.createReader;
 import static uk.gov.moj.cpp.workmanagement.proxy.api.util.JsonUtils.isJsonValid;
 
 import java.io.StringReader;
