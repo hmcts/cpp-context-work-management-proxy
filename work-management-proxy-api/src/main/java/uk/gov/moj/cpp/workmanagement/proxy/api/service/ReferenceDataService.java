@@ -15,8 +15,8 @@ import uk.gov.moj.cpp.workmanagement.proxy.api.model.WorkflowTaskType;
 import java.util.List;
 import java.util.UUID;
 
-import javax.inject.Inject;
-import javax.json.JsonObject;
+import jakarta.inject.Inject;
+import jakarta.json.JsonObject;
 
 public class ReferenceDataService {
     private static final String REFERENCE_DATA_QUERY_WORKFLOW_TASK_TYPES = "referencedata.query.workflow-task-types";

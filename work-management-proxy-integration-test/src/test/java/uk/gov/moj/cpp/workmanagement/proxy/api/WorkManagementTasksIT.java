@@ -16,7 +16,7 @@ import static uk.gov.moj.cpp.workmanagement.proxy.api.helper.RestHelper.pollForR
 import uk.gov.moj.cpp.workmanagement.proxy.api.helper.AbstractIT;
 import uk.gov.moj.cpp.workmanagement.proxy.api.helper.WireMockStubUtils;
 
-import javax.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

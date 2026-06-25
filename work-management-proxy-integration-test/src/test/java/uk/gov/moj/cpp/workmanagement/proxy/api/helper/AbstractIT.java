@@ -4,7 +4,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.reset;
 import static java.lang.System.getProperty;
 import static java.util.UUID.randomUUID;
-import static javax.ws.rs.core.Response.Status.NO_CONTENT;
+import static jakarta.ws.rs.core.Response.Status.NO_CONTENT;
 import static org.slf4j.LoggerFactory.getLogger;
 import static uk.gov.justice.services.common.http.HeaderConstants.USER_ID;
 import static uk.gov.moj.cpp.workmanagement.proxy.api.helper.RestHelper.HOST;
@@ -21,9 +21,9 @@ import static uk.gov.moj.cpp.workmanagement.proxy.api.helper.WireMockStubUtils.s
 
 import java.util.UUID;
 
-import javax.ws.rs.core.MultivaluedHashMap;
-import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.core.Response;
+import jakarta.ws.rs.core.MultivaluedHashMap;
+import jakarta.ws.rs.core.MultivaluedMap;
+import jakarta.ws.rs.core.Response;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.slf4j.Logger;

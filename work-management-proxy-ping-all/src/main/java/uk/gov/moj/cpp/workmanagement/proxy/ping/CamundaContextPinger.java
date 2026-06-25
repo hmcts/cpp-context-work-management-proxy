@@ -8,7 +8,7 @@ import uk.gov.moj.cpp.workmanagement.proxy.ping.configuration.ContextPingLocatio
 import uk.gov.moj.cpp.workmanagement.proxy.ping.http.ContextHttpPingException;
 import uk.gov.moj.cpp.workmanagement.proxy.ping.http.HttpContextPingerClient;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.slf4j.Logger;
 

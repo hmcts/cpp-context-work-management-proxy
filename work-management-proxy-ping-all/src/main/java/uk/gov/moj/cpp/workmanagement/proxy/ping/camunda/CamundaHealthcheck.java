@@ -1,6 +1,6 @@
 package uk.gov.moj.cpp.workmanagement.proxy.ping.camunda;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.runtime.ProcessInstanceQuery;
