@@ -7,7 +7,7 @@ import static org.hamcrest.Matchers.is;
 import uk.gov.moj.cpp.workmanagement.proxy.api.helper.AbstractIT;
 import uk.gov.moj.cpp.workmanagement.proxy.api.helper.WireMockStubUtils;
 
-import javax.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response;
 
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;

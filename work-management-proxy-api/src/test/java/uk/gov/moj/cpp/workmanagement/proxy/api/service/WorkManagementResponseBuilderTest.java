@@ -6,8 +6,8 @@ import static org.mockito.Mockito.when;
 
 import java.util.Optional;
 
-import javax.json.JsonValue;
-import javax.ws.rs.core.Response;
+import jakarta.json.JsonValue;
+import jakarta.ws.rs.core.Response;
 
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Test;

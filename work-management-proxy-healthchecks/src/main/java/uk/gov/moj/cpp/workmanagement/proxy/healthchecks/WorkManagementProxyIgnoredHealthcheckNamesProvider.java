@@ -13,7 +13,7 @@ import uk.gov.justice.services.healthcheck.healthchecks.artemis.ArtemisHealthche
 
 import java.util.List;
 
-import javax.enterprise.inject.Specializes;
+import jakarta.enterprise.inject.Specializes;
 
 @Specializes
 public class WorkManagementProxyIgnoredHealthcheckNamesProvider extends DefaultIgnoredHealthcheckNamesProvider {

@@ -5,7 +5,7 @@
     <parent>
         <groupId>uk.gov.moj.cpp.work-management-proxy</groupId>
         <artifactId>work-management-proxy-parent</artifactId>
-        <version>17.104.53-SNAPSHOT</version>
+        <version>25.104.0-M1-SNAPSHOT</version>
     </parent>
 
     <artifactId>work-management-proxy-api</artifactId>
@@ -22,8 +22,8 @@
             <artifactId>commons-lang3</artifactId>
         </dependency>
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -31,8 +31,8 @@
             <artifactId>framework-api-domain</artifactId>
         </dependency>
         <dependency>
-            <groupId>javax.json</groupId>
-            <artifactId>javax.json-api</artifactId>
+            <groupId>jakarta.json</groupId>
+            <artifactId>jakarta.json-api</artifactId>
         </dependency>
         <dependency>
             <groupId>uk.gov.moj.cpp.common</groupId>
@@ -71,7 +71,7 @@
         <!-- provides a default EjbProcessApplication -->
         <dependency>
             <groupId>org.camunda.bpm.javaee</groupId>
-            <artifactId>camunda-ejb-client</artifactId>
+            <artifactId>camunda-ejb-client-jakarta</artifactId>
         </dependency>
         <dependency>
             <groupId>uk.gov.moj.cpp.work-management-proxy</groupId>
@@ -187,7 +187,7 @@
         <!-- camunda cdi beans -->
         <dependency>
             <groupId>org.camunda.bpm</groupId>
-            <artifactId>camunda-engine-cdi</artifactId>
+            <artifactId>camunda-engine-cdi-jakarta</artifactId>
         </dependency>
 
         <!-- provides a default EjbProcessApplication -->
@@ -268,9 +268,14 @@
                 <artifactId>rest-client-generator-plugin</artifactId>
                 <dependencies>
                     <dependency>
-                        <groupId>javax</groupId>
-                        <artifactId>javaee-api</artifactId>
+                        <groupId>jakarta.platform</groupId>
+                        <artifactId>jakarta.jakartaee-api</artifactId>
                         <version>${javaee-api.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>jakarta.xml.bind</groupId>
+                        <artifactId>jakarta.xml.bind-api</artifactId>
+                        <version>${jakarta.xml.bind-api.raml.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>uk.gov.moj.cpp.usersgroups</groupId>

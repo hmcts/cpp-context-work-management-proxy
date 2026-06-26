@@ -13,7 +13,7 @@ import uk.gov.justice.services.adapter.rest.exception.BadRequestException;
 import uk.gov.justice.services.common.exception.ForbiddenRequestException;
 import uk.gov.moj.cpp.workmanagement.proxy.api.service.WorkManagementResponseBuilder;
 
-import javax.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response;
 
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.BeforeEach;

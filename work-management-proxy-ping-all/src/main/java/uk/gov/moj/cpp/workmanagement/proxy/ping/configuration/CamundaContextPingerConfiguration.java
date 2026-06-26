@@ -2,7 +2,7 @@ package uk.gov.moj.cpp.workmanagement.proxy.ping.configuration;
 
 import uk.gov.justice.services.common.configuration.Value;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 
 public class CamundaContextPingerConfiguration {

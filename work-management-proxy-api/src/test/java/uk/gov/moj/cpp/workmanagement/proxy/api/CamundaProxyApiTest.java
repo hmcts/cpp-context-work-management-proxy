@@ -77,10 +77,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import javax.json.JsonArray;
-import javax.json.JsonArrayBuilder;
-import javax.json.JsonObject;
-import javax.json.JsonObjectBuilder;
+import jakarta.json.JsonArray;
+import jakarta.json.JsonArrayBuilder;
+import jakarta.json.JsonObject;
+import jakarta.json.JsonObjectBuilder;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.camunda.bpm.engine.HistoryService;
@@ -999,12 +999,15 @@ public class CamundaProxyApiTest {
         taskId = taskOne.getId();
         final Task taskTwo = activeTasks.get(1);
 
+        // Camunda 7.24 enforces optimistic locking on saveTask more strictly: createComment bumps
+        // the task's DB revision, so saving the (now stale) in-memory task afterwards throws
+        // ENGINE-03005. Save the task first, then add the comment.
+        taskOne.setDueDate(dueDate);
+        taskService.saveTask(taskOne);
+
         if (hasTaskComment) {
             taskService.createComment(taskId, processInstanceId, TASK_ONE_COMMENT_VAL);
         }
-
-        taskOne.setDueDate(dueDate);
-        taskService.saveTask(taskOne);
 
         taskTwo.setDueDate(dueDate);
         taskService.saveTask(taskTwo);
@@ -1391,13 +1394,14 @@ public class CamundaProxyApiTest {
         taskId = taskOne.getId();
         final Task taskTwo = activeTasks.get(1);
 
+        // Camunda 7.24: save before createComment (which bumps the task revision) to avoid ENGINE-03005.
+        taskOne.setDueDate(dueDate);
+        taskService.saveTask(taskOne);
+
         if (hasTaskComment) {
             taskService.createComment(taskId, processInstanceId, TASK_ONE_COMMENT_VAL);
         }
 
-        taskOne.setDueDate(dueDate);
-
-        taskService.saveTask(taskOne);
         taskTwo.setDueDate(dueDate);
         taskService.saveTask(taskTwo);
         taskService.setAssignee(taskOne.getId(), "testAssignee1");

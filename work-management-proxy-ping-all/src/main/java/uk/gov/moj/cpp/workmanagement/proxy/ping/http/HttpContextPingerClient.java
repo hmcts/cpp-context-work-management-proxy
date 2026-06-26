@@ -8,7 +8,7 @@ import uk.gov.moj.cpp.workmanagement.proxy.ping.configuration.ContextPingLocatio
 
 import java.io.IOException;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.StatusLine;

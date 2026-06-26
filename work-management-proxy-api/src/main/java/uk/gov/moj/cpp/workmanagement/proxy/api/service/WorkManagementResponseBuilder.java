@@ -9,12 +9,12 @@ import static uk.gov.moj.cpp.workmanagement.proxy.api.util.JsonUtils.isJsonValid
 import java.io.StringReader;
 import java.util.Optional;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.json.JsonArray;
-import javax.json.JsonReader;
-import javax.json.JsonStructure;
-import javax.json.JsonValue;
-import javax.ws.rs.core.Response;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.json.JsonArray;
+import jakarta.json.JsonReader;
+import jakarta.json.JsonStructure;
+import jakarta.json.JsonValue;
+import jakarta.ws.rs.core.Response;
 
 import org.apache.http.HttpStatus;
 
