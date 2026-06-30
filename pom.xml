@@ -10,6 +10,7 @@
         <version>25.104.0-M4</version>
     </parent>
 
+
     <groupId>uk.gov.moj.cpp.work-management-proxy</groupId>
     <artifactId>work-management-proxy-parent</artifactId>
     <version>25.104.0-M1-SNAPSHOT</version>
