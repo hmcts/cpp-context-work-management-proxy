@@ -2,7 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <!-- Java 25 / WildFly 40 / Camunda 7.24 (25.104.x) upgrade — release-build trigger; no functional change. -->
+    <!-- Java 25 / WildFly 40 / Camunda 7.24 (25.104.x) upgrade — release-build re-trigger: the merge onto
+         team/25.104.x bumped the version to 25.104.3-M4-SNAPSHOT but published no Docker image, leaving the
+         newest image at 25.104.2-M4-SNAPSHOT from 6 August. An empty commit does not fire the build, so this
+         comment provides a real but inert diff. No functional change. -->
 
     <parent>
         <groupId>uk.gov.moj.cpp.common</groupId>
