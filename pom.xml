@@ -12,7 +12,7 @@
 
     <groupId>uk.gov.moj.cpp.work-management-proxy</groupId>
     <artifactId>work-management-proxy-parent</artifactId>
-    <version>17.104.53-SNAPSHOT</version>
+    <version>17.104.0-CIVIL-T3-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Work management proxy - Parent module</name>
@@ -29,7 +29,7 @@
         <org.projectlombok.version>1.18.26</org.projectlombok.version>
         <usersgroups.version>17.104.49</usersgroups.version>
         <referencedata.version>17.103.132</referencedata.version>
-        <coredomain.version>17.104.4</coredomain.version>
+        <coredomain.version>17.104.5-CIVIL-T3-SNAPSHOT</coredomain.version>
         <jgitflow-maven-plugin.version>1.0-m5.1</jgitflow-maven-plugin.version>
     </properties>
 
