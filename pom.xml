@@ -29,7 +29,7 @@
         <org.projectlombok.version>1.18.26</org.projectlombok.version>
         <usersgroups.version>17.104.49</usersgroups.version>
         <referencedata.version>17.103.132</referencedata.version>
-        <coredomain.version>17.104.4</coredomain.version>
+        <coredomain.version>17.104.6</coredomain.version>
         <jgitflow-maven-plugin.version>1.0-m5.1</jgitflow-maven-plugin.version>
     </properties>
 
