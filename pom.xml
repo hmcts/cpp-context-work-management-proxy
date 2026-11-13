@@ -28,7 +28,7 @@
         <lombok.mapstruct.binding.version>0.2.0</lombok.mapstruct.binding.version>
         <org.projectlombok.version>1.18.26</org.projectlombok.version>
         <usersgroups.version>25.104.52</usersgroups.version>
-        <referencedata.version>17.103.132</referencedata.version>
+        <referencedata.version>17.104.149</referencedata.version>
         <coredomain.version>17.104.6-CHD-2786-SNAPSHOT</coredomain.version>
         <jgitflow-maven-plugin.version>1.0-m5.1</jgitflow-maven-plugin.version>
     </properties>
